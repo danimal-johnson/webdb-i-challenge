@@ -31,3 +31,6 @@ content-type: application/json
 ###
 
 delete http://localhost:4001/api/accounts/16
+
+### Stretch test (query)
+get http://localhost:4001/api/accounts/?sortby=budget&limit=5&sortdir=desc

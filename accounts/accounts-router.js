@@ -4,8 +4,20 @@ const db = require('../data/dbConfig.js');
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
+  let limit = req.query.limit;
+  let sortBy = req.query.sortby;
+  let sortDir = req.query.sortdir;
+
   try {
-    res.json(await db("accounts").select());
+    if (limit && sortBy && sortDir) {
+      res.json(await db.select("*")
+              .from("accounts")
+              .orderBy(sortBy, sortDir)
+              .limit(limit));
+    }
+    else {
+      res.json(await db("accounts").select());
+    }
   }
   catch (err) {
     next(err);
