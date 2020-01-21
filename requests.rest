@@ -1,0 +1,36 @@
+get http://localhost:4001/
+
+###
+
+get http://localhost:4001/api/accounts
+
+###
+
+get http://localhost:4001/api/accounts/1
+
+###
+
+post http://localhost:4001/api/accounts
+content-type: application/json
+
+{
+  "name": "Wimpy",
+  "budget": 2.00
+}
+
+###
+
+put http://localhost:4001/api/accounts/15
+content-type: application/json
+
+{
+  "name": "Dr. Evil",
+  "budget": 1000000.00
+}
+
+###
+
+delete http://localhost:4001/api/accounts/16
+
+### Stretch test (query)
+get http://localhost:4001/api/accounts/?sortby=budget&limit=5&sortdir=desc
